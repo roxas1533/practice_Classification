@@ -23,4 +23,8 @@ Classification with Softmax Transfer and Cross Entropy Error
 <img src="https://latex.codecogs.com/gif.latex?_{20}C_{16}\left(\frac{1}{2}\right)^{16}\left(\frac{1}{2}\right&space;)^{4}=0.00462" title="_{20}C_{16}\left(\frac{1}{2}\right)^{16}\left(\frac{1}{2}\right )^{4}=0.00462" />  
 では<img src="https://latex.codecogs.com/gif.latex?w=\frac{2}{3}">の時はどうだろうか？  
 <img src="https://latex.codecogs.com/gif.latex?_{20}C_{16}\left(\frac{2}{3}\right)^{16}\left(\frac{2}{3}\right&space;)^{4}=0.09106" title="_{20}C_{16}\left(\frac{2}{3}\right)^{16}\left(\frac{2}{3}\right )^{4}=0.09106" />  
-2/3の時のほうが確率が高いことからこちらのほうがより真の表が出る確率が高そうといえる、つまりこの式の値(=確率)が最も高くなるようなwを見つければそれが真の表が出る確率といえそうであることがわかる。ではこの式の出力がもっとも高くなる時のwを求めるには？そう、微分をすればよいのである。ちなみにこの式をプロットすると以下のようなグラフになる。(w=0.8の時に最大となっているように思われる。）
+2/3の時のほうが確率が高いことからこちらのほうがより真の表が出る確率が高そうといえる、つまりこの式の値(=確率)が最も高くなるようなwを見つければそれが真の表が出る確率といえそうであることがわかる。ではこの式の出力がもっとも高くなる時のwを求めるには？そう、微分をすればよいのである。ちなみにこの式をプロットすると以下のようなグラフになる。(w=0.8の時に最大となっているように思われる。）  
+<img src="https://user-images.githubusercontent.com/52588447/88933174-0520b100-d2ba-11ea-8c5e-d9d24496a512.png" width="320" align="left"><img src="https://latex.codecogs.com/gif.latex?\frac{d}{dx}P(w)=\frac{d}{dw}\&space;_{20}C_{16}\left(w\right)^{16}\left(1-w\right&space;)^{4}" title="\frac{d}{dx}P(w)=\frac{d}{dw}\ _{20}C_{16}\left(w\right)^{16}\left(1-w\right )^{4}" />  
+計算しやすいように対数をとる(定数も計算に影響しないので取り除く)
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}\frac{d}{dw}(log(\left(w\right)^{16}\left(1-w\right&space;)^{4}))&=\frac{d}{dw}(16log(w)&plus;4log(1-w))\\&=\frac{16}{w}-\frac{4}{1-w}\\&=\frac{16-20w}{w-w^2}\end{align*}" title="\begin{align*}\frac{d}{dw}(log(\left(w\right)^{16}\left(1-w\right )^{4}))&=\frac{d}{dw}(16log(w)0+4log(1-w))\\&=\frac{16}{w}-\frac{4}{1-w}\\&=\frac{16-20w}{w-w^2}\end{align*}" />  
+<img src="https://latex.codecogs.com/gif.latex?w>0\\16-20w=0\\w=\frac{16}{20}\\w=\frac{4}{5}" title="x>0\\16-20x=0\\x=\frac{16}{20}\\w=\frac{4}{5}" />
