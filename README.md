@@ -35,4 +35,5 @@ Classification with Softmax Transfer and Cross Entropy Error
 この時の0,1の値は[1 1 1 1 1 1 1 1 0 1 1 1 1 1 0 0 1 1 1 1 1 1 0 0 1]この値がwの確率で出されたものとすると尤度は<img src="https://latex.codecogs.com/gif.latex?w^{20}(1-w)^5" title="w^{20}(1-w)^5" />である。尤度が最大となるwの値は0.8なので4～6で1になる確率は0.8であると推定できる。<img src="https://user-images.githubusercontent.com/52588447/89028606-aca7ed00-d367-11ea-8c52-328515290f53.png" width="320">これで、二分類ができた。
 
 
-本題の3分類に入る。2分類の時は線形的に解いたが今回のモデルはロジスティック回帰モデルを用いて解くことにする。まず、以下のようなモデルを考えた。
+本題の3分類に入る。2分類の時は線形的に解いたが今回のモデルはロジスティック回帰モデルを用いて解くことにする。まず、以下のようなモデルを考えた。  
+<img src="https://user-images.githubusercontent.com/52588447/89029524-9dc23a00-d369-11ea-9032-5cfda8010962.png" width="640" align="left">入力一次元(ダミーニューロンで二次元)中間層三次元出力層三次元である。このモデルの式は以下の通り<img src="https://latex.codecogs.com/gif.latex?x=[[x_1,1],[x_2,1],[x_3,1],[x_4,1],...,[x_N,1]]" title="x=[[x_1,1],[x_2,1],[x_3,1],[x_4,1],...,[x_N,1]]" />
