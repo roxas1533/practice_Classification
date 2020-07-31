@@ -25,6 +25,11 @@ Classification with Softmax Transfer and Cross Entropy Error
 <img src="https://latex.codecogs.com/gif.latex?_{20}C_{16}\left(\frac{2}{3}\right)^{16}\left(\frac{2}{3}\right&space;)^{4}=0.09106" title="_{20}C_{16}\left(\frac{2}{3}\right)^{16}\left(\frac{2}{3}\right )^{4}=0.09106" />  
 2/3の時のほうが確率が高いことからこちらのほうがより真の表が出る確率が高そうといえる、つまりこの式の値(=確率)が最も高くなるようなwを見つければそれが真の表が出る確率といえそうであることがわかる。ではこの式の出力がもっとも高くなる時のwを求めるには？そう、微分をすればよいのである。ちなみにこの式をプロットすると以下のようなグラフになる。(w=0.8の時に最大となっているように思われる。）  
 <img src="https://user-images.githubusercontent.com/52588447/88933174-0520b100-d2ba-11ea-8c5e-d9d24496a512.png" width="320" align="left"><img src="https://latex.codecogs.com/gif.latex?\frac{d}{dx}P(w)=\frac{d}{dw}\&space;_{20}C_{16}\left(w\right)^{16}\left(1-w\right&space;)^{4}" title="\frac{d}{dx}P(w)=\frac{d}{dw}\ _{20}C_{16}\left(w\right)^{16}\left(1-w\right )^{4}" />  
-計算しやすいように対数をとる(定数も計算に影響しないので取り除く)
+計算しやすいように対数をとる(定数も計算に影響しないので取り除く)  
 <img src="https://latex.codecogs.com/gif.latex?\begin{align*}\frac{d}{dw}(log(\left(w\right)^{16}\left(1-w\right&space;)^{4}))&=\frac{d}{dw}(16log(w)&plus;4log(1-w))\\&=\frac{16}{w}-\frac{4}{1-w}\\&=\frac{16-20w}{w-w^2}\end{align*}" title="\begin{align*}\frac{d}{dw}(log(\left(w\right)^{16}\left(1-w\right )^{4}))&=\frac{d}{dw}(16log(w)0+4log(1-w))\\&=\frac{16}{w}-\frac{4}{1-w}\\&=\frac{16-20w}{w-w^2}\end{align*}" />  
-<img src="https://latex.codecogs.com/gif.latex?w>0\\16-20w=0\\w=\frac{16}{20}\\w=\frac{4}{5}" title="x>0\\16-20x=0\\x=\frac{16}{20}\\w=\frac{4}{5}" />
+<img src="https://latex.codecogs.com/gif.latex?w>0\\16-20w=0\\w=\frac{16}{20}\\w=\frac{4}{5}" title="x>0\\16-20x=0\\x=\frac{16}{20}\\w=\frac{4}{5}" />  
+以上より<img src="https://latex.codecogs.com/gif.latex?w=\frac{4}{5}=0.8" title="w=\frac{4}{5}=0.8" />であるのでこのコインの表が出る確率は0.8のようである。この時、<img src="https://latex.codecogs.com/gif.latex?w^{16}(1-w)^4" title="w^{16}(1-w)^4" />を尤度と呼び、尤度が最大となるwを探すことが最尤推定である。
+
+それではこの最尤推定を使って二分類問題を解いていく。1と0が混ざっている4~6の値は  
+[4.151 4.304 4.342 4.412 4.448 4.546 4.58  4.69  4.691 4.723 4.822 4.914 4.95  5.075 5.309 5.343 5.384 5.395 5.438 5.491 5.548 5.788 5.826 5.84 5.906]
+この時の0,1の値は[1 1 1 1 1 1 1 1 0 1 1 1 1 1 0 0 1 1 1 1 1 1 0 0 1]この値がwの確率で出されたものとすると尤度は<img src="https://latex.codecogs.com/gif.latex?w^{20}(1-w)^5" title="w^{20}(1-w)^5" />である。尤度が最大となるwの値は0.8なので4~6で1になる確率は0.8であると推定できる。
