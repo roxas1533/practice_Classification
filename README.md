@@ -70,4 +70,4 @@ sig()はシグモイド関数、softmax()はソフトマックス関数を表す
 ニューロン数は二層とも22個にして9000回学習させたところ以下のようになった。  
 <img src="https://user-images.githubusercontent.com/52588447/89101896-3971aa00-d43f-11ea-8a83-93b02264fbac.png" width="320" aling="left">
 <img src="https://user-images.githubusercontent.com/52588447/89101900-3d053100-d43f-11ea-9b96-433f411cc14a.png" width="320" aling="left">  
-青はラベル1。0~4までの確率はほぼ1、4~6の時は0.2ぐらいと実際の分類結果とのあいまいさをうまく表してるといえる。
+青はラベル1。0～4までの確率はほぼ1、4～6の時は0.2ぐらいと実際の分類結果とのあいまいさをうまく表してるといえる。
