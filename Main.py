@@ -49,15 +49,15 @@ class Model:
             out = self.func(k[j])
             Q, Iq, z, Iz, y, Iy, = out[0], out[1], out[2], out[3], out[4], out[5]
             tt = np.reshape(t[j], (1, len(t[j])))
-            deltaWz = (Q - tt.T) * np.vstack((z, np.array([[1]]))).T
+            deltaWz = (Q - tt.T) * np.hstack((z.reshape(-1), [1.0]))
             SDWz.append(deltaWz)
             tempZ = np.delete(self.Wz.T, len(self.Wz[0]) - 1, 0)
             deltaZ = np.dot(tempZ, (Q - tt.T))
-            deltaWy = deltaZ * (z * (1 - z)) * np.vstack((y, np.array([[1]]))).T
+            deltaWy = deltaZ * (z * (1 - z)) * np.hstack((y.reshape(-1), 1.0))
             SDWy.append(deltaWy)
             # tempy = np.delete(self.Wy.T, len(self.Wy[0]) - 1, 0)
             deltaY = np.delete(self.Wy.T, num - 1, 0).T * (z * (1 - z))
-            deltaWx = np.dot(deltaY.T, deltaZ) * (y * (1 - y)) * np.array([[k[j], 1]])
+            deltaWx = np.dot(deltaY.T, deltaZ) * (y * (1 - y)) * np.hstack((k[j], 1.0))
             SDWx.append(deltaWx)
             # exit(1)
             self.Wy -= self.alpha * (np.mean(np.array(SDWy), axis=0))
@@ -88,7 +88,6 @@ for i in y:
 T = np.array(T)
 X = np.array(x)
 m = Model()
-
 
 m.fit()
 plt.figure()
